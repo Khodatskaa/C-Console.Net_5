@@ -2,52 +2,38 @@
 
 class Program
 {
-    // Task 1
-    static long GetProductInRange(int start, int end)
+    static void Main()
     {
-        long product = 1;
+        // Task 1
+        Console.WriteLine(Model.ProductInRange(1, 5)); // Example range: 1 to 5
 
-        for (int i = start; i <= end; i++)
-        {
-            product *= i;
-        }
+        // Task 2
+        Console.WriteLine(Model.IsFibonacci(13)); // Example number: 13
 
-        return product;
-    }
+        // Task 3
+        int[] arrayToSort = { 5, 2, 8, 1, 3 };
+        Model.SortArray(arrayToSort, Model.SortOrder.Ascending);
+        Console.WriteLine(string.Join(", ", arrayToSort));
 
-    // Task 2
-    static bool IsPerfectSquare(int x)
-    {
-        int sqrt = (int)Math.Sqrt(x);
-        return sqrt * sqrt == x;
-    }
+        // Task 4
+        Model.City city = new Model.City();
+        city.InputData();
+        city.OutputData();
 
-    static bool IsFibonacci(int number)
-    {
-        return IsPerfectSquare(5 * number * number + 4) || IsPerfectSquare(5 * number * number - 4);
-    }
+        // Task 5
+        Model.Employee employee = new Model.Employee();
+        employee.InputData();
+        employee.OutputData();
 
-    // Task 3
-    static int[] CustomSort(int[] array, string sortOrder)
-    {
-        int n = array.Length;
+        // Task 6
+        Model.Aircraft aircraft = new Model.Aircraft();
+        aircraft.InputData();
+        aircraft.OutputData();
 
-        for (int i = 0; i < n - 1; i++)
-        {
-            for (int j = 0; j < n - i - 1; j++)
-            {
-                bool swapCondition = (sortOrder == "Ascending" && array[j] > array[j + 1]) ||
-                                      (sortOrder == "Descending" && array[j] < array[j + 1]);
-
-                if (swapCondition)
-                {
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
-        }
-
-        return array;
+        // Task 7
+        Model.Matrix matrix = new Model.Matrix();
+        matrix.InputData();
+        matrix.OutputData();
+        Console.WriteLine($"Maximum: {matrix.GetMax()}, Minimum: {matrix.GetMin()}");
     }
 }

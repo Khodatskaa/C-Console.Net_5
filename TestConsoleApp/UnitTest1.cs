@@ -1,51 +1,67 @@
-using Microsoft.VisualStudio.TestPlatform.TestHost;
 namespace TestConsoleApp
 {
     [TestClass]
     public class ProgramTests
     {
+        //Test 1
         [TestMethod]
-        public void TestGetProductInRange()
+        public void TestProductInRange()
         {
-            int start = 2;
-            int end = 5;
-            long expectedResult = 2 * 3 * 4 * 5;
-
-            long result = Program.GetProductInRange(start, end);
-
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(120, Model.ProductInRange(1, 5));
         }
 
+        //Test 2
         [TestMethod]
         public void TestIsFibonacci()
         {
-            int fibonacciNumber = 21;
-            int nonFibonacciNumber = 6;
-
-            Assert.IsTrue(Program.IsFibonacci(fibonacciNumber));
-            Assert.IsFalse(Program.IsFibonacci(nonFibonacciNumber));
+            Assert.IsTrue(Model.IsFibonacci(13));
         }
 
+        //Test 3
         [TestMethod]
-        public void TestCustomSortAscending()
+        public void TestSortArray()
         {
-            int[] array = { 5, 2, 8, 1, 7 };
-            int[] expectedArray = { 1, 2, 5, 7, 8 };
-
-            int[] result = Program.CustomSort(array, "Ascending");
-
-            CollectionAssert.AreEqual(expectedArray, result);
+            int[] arrayToSort = { 5, 2, 8, 1, 3 };
+            Model.SortArray(arrayToSort, Model.SortOrder.Ascending);
+            Assert.AreEqual("1, 2, 3, 5, 8", string.Join(", ", arrayToSort));
         }
 
+        //Test 4
         [TestMethod]
-        public void TestCustomSortDescending()
+        public void TestCity()
         {
-            int[] array = { 5, 2, 8, 1, 7 };
-            int[] expectedArray = { 8, 7, 5, 2, 1 };
+            Model.City city = new Model.City();
+            city.InputData();
+            city.OutputData();
+        }
 
-            int[] result = Program.CustomSort(array, "Descending");
+        //Test 5
+        [TestMethod]
+        public void TestEmployee()
+        {
+            Model.Employee employee = new Model.Employee();
+            employee.InputData();
+            employee.OutputData();
+        }
 
-            CollectionAssert.AreEqual(expectedArray, result);
+        //Test 6
+        [TestMethod]
+        public void TestAircraft()
+        {
+            Model.Aircraft aircraft = new Model.Aircraft();
+            aircraft.InputData();
+            aircraft.OutputData();
+        }
+
+        //Test 7
+        [TestMethod]
+        public void TestMatrix()
+        {
+            Model.Matrix matrix = new Model.Matrix();
+            matrix.InputData();
+            matrix.OutputData();
+            Assert.AreEqual(9, matrix.GetMax());
+            Assert.AreEqual(1, matrix.GetMin());
         }
     }
 }
