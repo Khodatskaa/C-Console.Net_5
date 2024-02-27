@@ -33,13 +33,11 @@ namespace Model
     }
 
     // Task 3
-    public enum SortOrder { Ascending, Descending }
-
     public static class SortArray
     {
-        public static void SortArray(int[] array, SortOrder sortOrder)
+        public static void SortArray(int[] array, bool ascending)
         {
-            if (sortOrder == SortOrder.Ascending)
+            if (ascending)
             {
                 Array.Sort(array);
             }
